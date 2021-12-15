@@ -6,6 +6,6 @@ except ImportError:
 
 
 from ._reader import napari_get_reader
-from ._writer import write_single_image, write_multiple 
+from ._writer import write_single_labels
 
-from ._widget import ExampleQWidget
+from ._widget import SegmentationDiffHighlight, segment_by_threshold

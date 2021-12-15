@@ -1,41 +1,33 @@
 name: live-demo
 display_name: kickoff demo
+
 contributions:
   commands:
     - id: live-demo.get_reader
       python_name: live_demo._reader:napari_get_reader
       title: Open data with kickoff demo
-    - id: live-demo.write_multiple
-      python_name: live_demo._writer:write_multiple
-      title: Save multi-layer data with kickoff demo
-    - id: live-demo.write_single_image
-      python_name: live_demo._writer:write_single_image
+    - id: live-demo.write_single_labels
+      python_name: live_demo._writer:write_single_labels
       title: Save image data with kickoff demo 
+
     - id: live-demo.make_qwidget
-      python_name: live_demo._widget:ExampleQWidget
-      title: Make example QWidget
+      python_name: live_demo._widget:SegmentationDiffHighlight
+      title: Make highlight QWidget
     - id: live-demo.make_magic_widget
-      python_name: live_demo._widget:example_magic_widget
-      title: Make example magic widget
-    - id: live-demo.make_func_widget
-      python_name: live_demo._widget:example_function_widget
-      title: Make example function widget 
+      python_name: live_demo._widget:segment_by_threshold
+      title: Make example segment
+
   readers:
     - command: live-demo.get_reader
-      accepts_directories: false
-      filename_patterns: ['*.npy'] 
+      accepts_directories: true
+      filename_patterns: [] 
   writers:
-    - command: live-demo.write_multiple
-      layer_types: ['image*','labels*']
-      filename_extensions: []
-    - command: live-demo.write_single_image
-      layer_types: ['image']
-      filename_extensions: ['.npy'] 
+
+    - command: live-demo.write_single_labels
+      layer_types: ['labels']
+      filename_extensions: ['.zip'] 
   widgets:
     - command: live-demo.make_qwidget
-      display_name: Example QWidget
+      display_name: Highlight
     - command: live-demo.make_magic_widget
-      display_name: Example Magic Widget
-    - command: live-demo.make_func_widget
-      autogenerate: true
-      display_name: Example Function Widget 
+      display_name: Segment
